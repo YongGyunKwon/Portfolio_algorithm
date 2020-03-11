@@ -81,7 +81,7 @@ int main()
         {
             number[tmp]++;
         }
-        xelse
+        else
         {
             number[tmp+4000]++;
         }
