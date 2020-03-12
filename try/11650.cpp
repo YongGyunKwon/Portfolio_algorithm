@@ -9,10 +9,12 @@ int main()
     cin.tie(0);
 
     int n;
+    string a;
     cin>>n;
-    
+    cin>>a;
+    cout<<a<<endl;
     cout<<n<<endl;
-
+    cout<<"묻고 떠블로 가"<<endl;
 
 
 
