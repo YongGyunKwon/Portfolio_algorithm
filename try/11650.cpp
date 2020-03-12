@@ -16,7 +16,7 @@ int main()
     cout<<n<<endl;
     cout<<"¹¯°í ¶°ºí·Î °¡"<<endl;
 
-
+    cout<<"hello"<<endl;
 
     return 0;
 } 
