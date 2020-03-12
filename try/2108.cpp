@@ -88,11 +88,13 @@ int main()
     }
 
     partition(0,n-1);
-
+    /*
+    //지우기
     for(int i=0;i<n;i++)
     {
         cout<<"arr["<<i<<"]"<<arr[i]<<endl;
     }
+    */
 
     //problem1
     average=round(sum/(double)n);
@@ -101,17 +103,40 @@ int main()
     //problem2
     middle=arr[n/2];
 
+    
+    
+    
+    
+    
+    
     //problem3
-    for(int j=0;j<8001;j++)
+
+    for(int j=8000;0<=j;j--)
     {
-        if(maxc<number[j])
+        if(maxc<=number[j] && maxn>j)
         {
             maxc=number[j];
             maxn=j;
         }
     }
-
+    /*
+    cout<<"maxn is"<<maxn<<endl;
     cout<<"maxc is"<<maxc<<endl;
+    */
+    /*
+    for(int k=maxn+1;k<8001;k++)
+    {
+        if(number[k]==maxc)
+        {
+            maxn=k;
+            break;
+        }
+    }
+    */
+   /*
+    cout<<"maxc2 is"<<maxc<<endl;
+    cout<<"maxn2 is"<<maxn<<endl;
+    */
     if(maxn>4000)
         maxn-=4000;
     else
@@ -119,10 +144,21 @@ int main()
         maxn=-maxn;
     }
 
-    cout<<"maxn is"<<maxn<<endl;
+    //cout<<"maxn is"<<maxn<<endl;
+    
+
+
+
+
+
+
+
+
+
+
 
     //problem4
-    coverage=arr[0]-arr[n-1];
+    coverage=arr[n-1]-arr[0];
 
     cout<<average<<endl; //완료
     cout<<middle<<endl; //완료
