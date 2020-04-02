@@ -9,10 +9,7 @@ long long int fac(int n)
     {
         return n*fac(n-1);
     }
-
-
     
-
 }
 
 int main()
