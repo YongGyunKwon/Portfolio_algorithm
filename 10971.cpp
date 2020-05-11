@@ -1,23 +1,44 @@
 #include<iostream>
 using namespace std;
 
-int MIN=987654321;
-int check[10]={0,};
+int MIN=98765;
+int W[11][11];
+int check[11];
+int N;
 
+//result가 다 더한 결과...
+//start에서 시작
+//y가 [*][]
+//sum이 합
+//cnt
 
-int solve(int *check,int now_i,int now_j,int to,int N,int count,int result)
+void solve(int start,int y,int sum,int cnt)
 {
-    if(count==N)
+    //모두 순회완료
+    if(start==y && cnt==N)
     {
-        if(MIN>result)
-            return result;
+        if(MIN>sum)
+            MIN=sum;
+        return;
     }
+    //W[y][* ]
+    for(int x=0;x<N;x++)
+    {
+        if(W[y][x]==0)
+            continue;
+        if(!check[y] && W[y][x]>0)
+        {
+            check[y]=true;
+            sum+=W[y][x];
+        }
+        if(sum<=MIN)
+        {
+            solve(start,x,sum,cnt+1);
+        }
 
-    check[now_i]=1;
-
-    
-
-    
+        check[y]=false;
+        sum-=W[y][x];
+    }
 
 }
 
@@ -26,9 +47,6 @@ int main()
 
     ios::sync_with_stdio(0);
     cin.tie(0);
-
-    int N;
-    int W[10][10];
 
     scanf("%d",&N);
 
@@ -40,8 +58,13 @@ int main()
             scanf("%d",&W[i][j]);
         }
     }
-       
-    printf("%d\n",MIN);
+
+    for(int y=0;y<N;y++)
+    {
+        solve(y,y,0,0);
+    }
+
+    printf("%d",MIN);
 
     return 0;
 }
