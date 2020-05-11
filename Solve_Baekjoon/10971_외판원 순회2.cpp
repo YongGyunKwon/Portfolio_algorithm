@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int MIN=98765;
+int MIN=987654321;
 int W[11][11];
 int check[11];
 int N;
@@ -21,6 +21,7 @@ void solve(int start,int y,int sum,int cnt)
             MIN=sum;
         return;
     }
+
     //W[y][* ]
     for(int x=0;x<N;x++)
     {
@@ -30,14 +31,17 @@ void solve(int start,int y,int sum,int cnt)
         {
             check[y]=true;
             sum+=W[y][x];
-        }
-        if(sum<=MIN)
-        {
-            solve(start,x,sum,cnt+1);
-        }
 
-        check[y]=false;
-        sum-=W[y][x];
+            if(sum<=MIN)
+            {
+            solve(start,x,sum,cnt+1);
+            }
+
+            check[y]=false;
+            sum-=W[y][x];
+        }
+        
+        
     }
 
 }
