@@ -1,4 +1,5 @@
 #include<iostream>
+#include<algorithm>
 using namespace std;
 
 /*
@@ -9,21 +10,36 @@ int L; // L 자리 만들기
 int C; // C개의 문자
 char P[16];
 
-void go(char *P,int cnt)
+
+//P는 입력 받은 배열
+//mo is 모음
+//ja is 자음
+//s 는 패스워드
+
+void go(int i,int cnt,int mo,int ja,string s)
 {
-    if(cnt==L)
+    if(cnt==L&&mo>=1&&ja>=2)
+    {
+        cout<<s<<endl;
         return;
+    }
+    else if(cnt==L)
+    {
+        return;
+    }
+     
+    if(P[i]=='a'|| P[i]=='e'||P[i]=='i'||P[i]=='o'||P[i]=='u')
+    {
+                go(i+1,cnt+1,mo+1,ja,s+P[i]);
+    }
     else
     {
-
-        
-
-
-
-
+                go(i+1,cnt+1,mo,ja+1,s+P[i]);
     }
-    
+        go(i+1,cnt,mo,ja,s);
+            
 }
+
 
 int main()
 {
@@ -31,9 +47,21 @@ int main()
     cin.tie(0);
 
 
-    scanf("%d %d",&L,&C);
+    cin>>L>>C;
 
+    for(int i=0;i<C;i++)
+    {
+        cin>>P[i];
+    }
 
+    sort(P,P+C);
+
+    for(int i=0;i<C;i++)
+    {
+        cout<<P[i]<<endl;
+    }
+
+    
+    go(0,0,0,0,"");
     return 0;
-
 }
