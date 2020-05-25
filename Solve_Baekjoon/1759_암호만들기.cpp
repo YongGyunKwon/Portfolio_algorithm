@@ -23,7 +23,8 @@ void go(int i,int cnt,int mo,int ja,string s)
         cout<<s<<endl;
         return;
     }
-    else if(cnt==L)
+    
+    if(i==C)
     {
         return;
     }
@@ -36,7 +37,7 @@ void go(int i,int cnt,int mo,int ja,string s)
     {
                 go(i+1,cnt+1,mo,ja+1,s+P[i]);
     }
-        go(i+1,cnt,mo,ja,s);
+    go(i+1,cnt,mo,ja,s);
             
 }
 
@@ -45,8 +46,7 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-
-
+    
     cin>>L>>C;
 
     for(int i=0;i<C;i++)
@@ -55,12 +55,6 @@ int main()
     }
 
     sort(P,P+C);
-
-    for(int i=0;i<C;i++)
-    {
-        cout<<P[i]<<endl;
-    }
-
     
     go(0,0,0,0,"");
     return 0;
