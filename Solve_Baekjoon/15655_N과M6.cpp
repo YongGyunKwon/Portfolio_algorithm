@@ -1,11 +1,12 @@
 #include<iostream>
 #include<algorithm>
+#include<vector>
 using namespace std;
 
 const int MAX= 10;
 int N,M;
 int arr[MAX];
-int c[MAX];
+bool c[MAX];
 int num[MAX];
 
 void NM(int N,int M,int index,int start)
@@ -22,15 +23,16 @@ void NM(int N,int M,int index,int start)
 
     for(int i=start;i<N;i++)
     {
-        if(c[i])
-             continue;
+        if(c[i]==false)
+        {
+            c[i]=true;
+            arr[index]=num[i];
+            NM(N,M,index+1,i+1);
+            c[i]=false;
+        }
 
-        c[i]=true;
-        arr[index]=num[i];
-        NM(N,M,index+1,i);
-        c[i]=false;
+        
     }
-
 }
 
 int main()
@@ -43,12 +45,12 @@ int main()
     }
 
     sort(num,num+N);
-    
-    for(int i=0;i<N;i++)
-        printf("%d",num[i]);
-    
-    printf("\n");
-    
+
+    // for(int i=0;i<N;i++)
+    //     printf("%d",num[i]);
+
+    // printf("\n");
+
     NM(N,M,0,0);
 
 
