@@ -1,4 +1,4 @@
-
+#큰수의법칙
 N,M,K=map(int, input().split());
 
 data=list(map(int, input().split()));
