@@ -1,0 +1,3 @@
+N,M=input().split(':');
+
+
